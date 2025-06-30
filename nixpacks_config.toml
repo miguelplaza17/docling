@@ -1,0 +1,15 @@
+[phases.setup]
+aptPkgs = [
+    "poppler-utils",
+    "tesseract-ocr", 
+    "libmagic1",
+    "libgl1-mesa-glx",
+    "libglib2.0-0"
+]
+
+[build]
+# Aumentar timeout para dependências pesadas
+buildCommand = "pip install --timeout=300 -r requirements.txt"
+
+[start]
+cmd = "uvicorn main:app --host 0.0.0.0 --port $PORT"
